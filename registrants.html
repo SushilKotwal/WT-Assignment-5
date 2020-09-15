@@ -1,0 +1,189 @@
+<html>
+    <head>
+        <title>
+            Registrants
+        </title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <style>
+             *{
+	        box-sizing: box-border;
+	        font-family:berlin sans fb;
+            }
+            .total{
+            background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(../p1/background.jpg);
+            height:100vh;
+            background-size:cover;
+            background-position:center;
+            }
+            .head{
+                position:relative;
+                margin:10px 0;
+                padding:5px;
+                overflow:auto;
+            }
+            .title{
+            text-align:center;
+            color:white;
+	        position:absolute;
+	        bottom:10px;
+	        display: inline-block;
+	        font-size: 4vw;
+            }
+            .logo img{
+	        padding:5px;
+	        width:60px;
+	        height:85px;
+	        float: left;
+	        margin-left:25vw;
+            }
+            #p span{
+            font-size:20px;
+            padding:5px 40px 5px 40px;
+            background-color:transparent;
+            color:white;
+            position:absolute;
+            bottom:595px;
+            left:450px;
+            font-weight: bold;
+            transition: 0.6s ease;
+            }
+            #p span:hover {
+                background-color: white;
+                color: black;
+            }
+
+            #p1 span{
+                font-size:20px;
+                padding:5px 40px 5px 40px;
+                background-color: transparent;
+                color:white;
+                position:absolute;
+                bottom:595px;
+                left:603px;
+                font-weight: bold;
+                transition: 0.6s ease;
+
+            }
+            #p1 span:hover {
+                background-color: white;
+                color: black;
+            }
+
+            #p2 span{
+                font-size:20px;
+                padding: 5px 40px 5px 40px;
+                background-color: transparent;
+                color:white;
+                position:absolute;
+                bottom:595px;
+                left:870px;
+                font-weight: bold;
+                transition: 0.6s ease;
+
+            }
+            #p2 span:hover {
+                background-color: white;
+                color: black;
+            }
+            .menu a{
+                color:red;
+                text-decoration: none;
+            }
+            .menu{
+                margin-top: 20px;;
+            }
+            .tab3 table{
+                color:white;
+            }
+            .tab3{
+               
+               font-family:FOOTLIGHT MT LIGHT;
+               font-size:1.2vw;
+               border:collapse;
+               border:1px solid black;
+               color:lightgreen;
+           }
+           .tab3 tr{
+             border:1px solid black;
+             padding:2px;
+             
+           }
+           .tab3 td{
+             border:1px solid black;
+             padding:2px;
+             
+           }
+           .tab3 th{
+             border:1px solid black;
+             padding:2px;
+             
+           }
+        </style>
+    </head>
+    <body>
+        <div class = "total">
+            <div class="head">
+                <div class="logo">
+                    <img src="q.png">
+                </div>
+                <div class="title">
+                    Natraj Dance Competition
+                </div>
+            </div>
+            <div class="menu">
+                    <div id="p">
+                            <span><a href="index.html">Home</a></span>
+                    </div>		
+                    <div id="p1">
+                        <span ><a href="form.html">Registration Form</a></span>
+                    </div>
+                    <div id="p2">
+                        <span><a href="registrants.html">Show Registrants</a></span>
+                    </div>
+            </div>
+            <div class="tab3">
+                <table name="table" id="t1">
+                    <tr>
+                        <th>Name</th>
+                        <th>Gender</th>
+                        <th>Email Id</th>
+                        <th>Age</th>
+                        <th>Mobile No.</th>
+                        <th>Area</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <script>
+            $(document).ready(function()
+                {
+                    $.getJSON('data.json',function(data){
+                        var registrant = '';
+
+                        $.each(data, function(key,value){
+                            registrant +='<tr>';
+                            registrant +='<td>'+
+                                value.name + '<td>';
+                            registrant +='<td>'+
+                                value.gender + '<td>';
+                            registrant +='<td>'+
+                                value.email + '<td>';
+                            registrant +='<td>'+
+                                value.age + '<td>';
+                            registrant +='<td>'+
+                                value.mobile + '<td>';
+                            registrant +='<td>'+
+                                value.area + '<td>';
+
+                                registrant +='<tr>';
+                        });
+
+                        $('#t1').append(registrant);
+
+                    });
+                });
+
+                
+        </script>
+        </body>
+</html>
